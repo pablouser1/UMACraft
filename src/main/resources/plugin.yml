@@ -1,0 +1,17 @@
+name: Umacraft
+version: '${project.version}'
+main: es.pablouser1.umacraft.Umacraft
+api-version: 1.19
+authors: [ pablouser1 ]
+description: Autenticador de alumnos de la UMA
+website: https://github.com/pablouser1/UMACraft
+commands:
+  login:
+    description: "Iniciar sesión al usuario"
+    usage: "/login CONTRASEÑA"
+  register:
+    description: "Registrarse usando tu NIU"
+    usage: "/register NIU"
+  verify:
+    description: "Verifica tu identidad con tu PIN"
+    usage: "/verify PIN"
