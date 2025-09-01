@@ -2,8 +2,8 @@ package es.pablouser1.umacraft.helpers;
 
 import es.pablouser1.umacraft.models.EmailConfig;
 
-import javax.mail.*;
-import javax.mail.internet.*;
+import jakarta.mail.*;
+import jakarta.mail.internet.*;
 import java.util.Properties;
 
 public class Mail {
