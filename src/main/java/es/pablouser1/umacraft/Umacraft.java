@@ -16,7 +16,7 @@ public final class Umacraft extends JavaPlugin {
     @Override
     public void onEnable() {
         Config config = new Config(this);
-        this.db = new Database(config.getDbUri());
+        this.db = new Database(config.getDbUri(), config.dbNeedsPopulate());
         Mail mail = new Mail(config.getEmailConfig());
         this.auth = new Auth();
         // Listeners

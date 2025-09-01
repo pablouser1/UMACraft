@@ -17,6 +17,7 @@ public class AuthCommands implements CommandExecutor {
     final private Database db;
     final private Mail mail;
     final private Auth auth;
+
     public AuthCommands(Database db, Mail mail, Auth auth) {
         super();
         this.db = db;

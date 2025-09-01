@@ -7,10 +7,13 @@ import java.sql.*;
 public class Database {
     final private Connection conn;
     final private Hashing hashing;
-    public Database(String uri) {
+    public Database(String uri, boolean dbNeedsPopulate) {
         this.hashing = new Hashing();
         try {
             this.conn = DriverManager.getConnection(uri);
+            if (dbNeedsPopulate) {
+                this.populate();
+            }
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -99,5 +102,31 @@ public class Database {
                 throw new RuntimeException(e);
             }
         }
+    }
+
+    private void populate() throws SQLException {
+        String users = """
+        CREATE TABLE "users" (
+            "id"	INTEGER NOT NULL,
+            "username" TEXT NOT NULL UNIQUE,
+            "password"	TEXT NOT NULL,
+            "niu"	TEXT NOT NULL UNIQUE,
+            PRIMARY KEY("id" AUTOINCREMENT)
+        );
+        """;
+
+        String verification = """
+        CREATE TABLE "verification" (
+            "id"	INTEGER NOT NULL,
+            "niu"	TEXT NOT NULL UNIQUE,
+            "code"	TEXT NOT NULL UNIQUE,
+            PRIMARY KEY("id" AUTOINCREMENT)
+        );
+        """;
+        PreparedStatement stmt_users = this.conn.prepareStatement(users);
+        stmt_users.execute();
+
+        PreparedStatement stmt_verify = this.conn.prepareStatement(verification);
+        stmt_verify.execute();
     }
 }

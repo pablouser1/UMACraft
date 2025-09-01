@@ -8,12 +8,15 @@ import java.io.File;
 import java.io.IOException;
 
 public class Config {
-    private File dbFile;
-    private FileConfiguration client;
+    private final File dbFile;
+    private final FileConfiguration client;
+    private final boolean dbExists;
+
     public Config(Umacraft plugin) {
         plugin.saveDefaultConfig();
         this.dbFile = new File(plugin.getDataFolder(), "users.db");
-        if (!this.dbFile.exists()) {
+        this.dbExists = this.dbFile.exists();
+        if (!this.dbExists) {
             this.dbFile.getParentFile().mkdirs();
             try {
                 this.dbFile.createNewFile();
@@ -28,10 +31,16 @@ public class Config {
         return this.client.getString("db", "jdbc:sqlite:" + this.dbFile.getAbsolutePath());
     }
 
+    public boolean dbNeedsPopulate() {
+        return !this.dbExists;
+    }
+
     public EmailConfig getEmailConfig() {
         String host = this.client.getString("email.host", "localhost");
+        int port = this.client.getInt("email.port", 1025);
         String username = this.client.getString("email.username", "wikiuma@example.com");
         String password = this.client.getString("email.password", "");
-        return new EmailConfig(host, username, password);
+        String encryption = this.client.getString("email.encryption", "none");
+        return new EmailConfig(host, port, username, password, encryption);
     }
 }

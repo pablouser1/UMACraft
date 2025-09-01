@@ -14,6 +14,7 @@ import org.bukkit.event.player.PlayerQuitEvent;
 
 public class AuthListener implements Listener {
     final private Auth auth;
+
     public AuthListener(Umacraft plugin, Auth auth) {
         plugin.getServer().getPluginManager().registerEvents(this, plugin);
         this.auth = auth;
