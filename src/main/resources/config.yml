@@ -1,0 +1,9 @@
+db:
+  uri: 'jdbc:sqlite:file:test?mode=memory&cache=shared'
+  driver: 'org.sqlite.JDBC'
+mail:
+  host: localhost
+  port: 1025
+  username: 'test@example.com'
+  password: ''
+  encryption: 'NONE'
