@@ -18,35 +18,35 @@ class AuthListener(private val auth: Auth): Listener {
 
     @EventHandler
     fun onPlayerQuit(e: PlayerQuitEvent) {
-        this.auth.delete(e.player.name);
+        this.auth.delete(e.player.name)
     }
 
     @EventHandler
     fun onPlayerMove(e: PlayerMoveEvent) {
         if (this.auth.exists(e.player.name)) {
-            return;
+            return
         }
 
         if (e.hasChangedBlock() || e.hasChangedOrientation() || e.hasChangedPosition()) {
-            e.isCancelled = true;
+            e.isCancelled = true
         }
     }
 
     @EventHandler
     fun onBlockPlace(e: BlockPlaceEvent) {
         if (this.auth.exists(e.player.name)) {
-            return;
+            return
         }
 
-        e.isCancelled = true;
+        e.isCancelled = true
     }
 
     @EventHandler
     fun onBlockBreak(e: BlockBreakEvent) {
         if (this.auth.exists(e.player.name)) {
-            return;
+            return
         }
 
-        e.isCancelled = true;
+        e.isCancelled = true
     }
 }

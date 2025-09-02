@@ -7,14 +7,10 @@ import com.mojang.brigadier.tree.LiteralCommandNode
 import es.pablouser1.umacraft.constants.Messages
 import es.pablouser1.umacraft.helpers.Auth
 import es.pablouser1.umacraft.helpers.Hashing
-import es.pablouser1.umacraft.models.Invitations
 import es.pablouser1.umacraft.models.Users
 import io.papermc.paper.command.brigadier.CommandSourceStack
 import io.papermc.paper.command.brigadier.Commands
 import org.bukkit.entity.Player
-import org.jetbrains.exposed.v1.core.statements.UpsertSqlExpressionBuilder.eq
-import org.jetbrains.exposed.v1.jdbc.deleteWhere
-import org.jetbrains.exposed.v1.jdbc.insert
 import org.jetbrains.exposed.v1.jdbc.selectAll
 import org.jetbrains.exposed.v1.jdbc.transactions.transaction
 import java.util.logging.Logger

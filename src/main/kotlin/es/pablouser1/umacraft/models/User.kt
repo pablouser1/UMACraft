@@ -6,4 +6,5 @@ object Users: IntIdTable("users") {
     val username = varchar("username", 32)
     val niu = varchar("niu", 16)
     val password = varchar("password", 72)
+    val centro = integer("centro").nullable()
 }

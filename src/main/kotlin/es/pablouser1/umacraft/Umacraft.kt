@@ -1,5 +1,6 @@
 package es.pablouser1.umacraft
 
+import es.pablouser1.umacraft.commands.CentrosCommand
 import es.pablouser1.umacraft.commands.LoginCommand
 import es.pablouser1.umacraft.commands.RegisterCommand
 import es.pablouser1.umacraft.commands.VerifyCommand
@@ -7,6 +8,7 @@ import es.pablouser1.umacraft.enums.MailEncryptionEnum
 import es.pablouser1.umacraft.helpers.Auth
 import es.pablouser1.umacraft.helpers.Mail
 import es.pablouser1.umacraft.listeners.AuthListener
+import es.pablouser1.umacraft.listeners.CentrosInventoryListener
 import es.pablouser1.umacraft.models.EmailConfig
 import es.pablouser1.umacraft.models.Invitations
 import es.pablouser1.umacraft.models.Users
@@ -34,6 +36,7 @@ class Umacraft : JavaPlugin() {
         val auth = Auth()
 
         server.pluginManager.registerEvents(AuthListener(auth), this)
+        server.pluginManager.registerEvents(CentrosInventoryListener(), this)
 
         setupCommands(auth, mail)
 
@@ -59,6 +62,7 @@ class Umacraft : JavaPlugin() {
             registrar.register(RegisterCommand(auth, mail, logger).createCommand())
             registrar.register(VerifyCommand(auth, logger).createCommand())
             registrar.register(LoginCommand(auth, logger).createCommand())
+            registrar.register(CentrosCommand().createCommand())
         })
     }
 }
