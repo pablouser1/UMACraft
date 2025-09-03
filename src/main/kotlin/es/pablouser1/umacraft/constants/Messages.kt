@@ -6,6 +6,7 @@ class Messages {
         const val LOGIN = "¡Bienvenido! Inicia sesión usando /login. También puedes registrate usando /register."
 
         // Common
+        const val COMMON_MUST_BE_LOGGED_IN = "<red>Tienes que iniciar sesión."
         const val COMMON_ALREADY_LOGGED_IN = "<red>Ya has iniciado sesión."
         const val COMMON_MUST_BE_PLAYER = "<red>Tienes que ser un jugador."
 
@@ -17,6 +18,7 @@ class Messages {
         // Verify
         const val VERIFY_OK = "¡Registro terminado, bienvenid@! Puedes iniciar sesión con /login"
         const val VERIFY_INVALID_CODE = "<red>Código inválido."
+        const val VERIFY_CENTRO_REMINDER = "Recuerda que puedes elegir tu facultad / escuela una vez inicias sesión con /centros"
 
         // Login
         const val LOGIN_OK = "Sesión iniciada con éxito."

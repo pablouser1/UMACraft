@@ -2,11 +2,14 @@ package es.pablouser1.umacraft.listeners
 
 import es.pablouser1.umacraft.constants.Centros
 import es.pablouser1.umacraft.inventories.CentrosInventory
+import es.pablouser1.umacraft.models.Users
 import net.kyori.adventure.key.Key
 import net.kyori.adventure.sound.Sound
 import org.bukkit.event.EventHandler
 import org.bukkit.event.Listener
 import org.bukkit.event.inventory.InventoryClickEvent
+import org.jetbrains.exposed.v1.jdbc.transactions.transaction
+import org.jetbrains.exposed.v1.jdbc.update
 
 class CentrosInventoryListener: Listener {
     @EventHandler
@@ -25,15 +28,18 @@ class CentrosInventoryListener: Listener {
         val rawSlot = event.rawSlot
         val centro = Centros.getByIndex(rawSlot) ?: return
 
-        player.sendPlainMessage("Has elegido $centro")
+        transaction {
+            Users.update({ Users.username eq player.name }) {
+                it[this.centro] = rawSlot
+            }
+        }
+
+        player.sendPlainMessage("Has elegido ${centro.name}")
         val sound = Sound.sound(
             Key.key("minecraft", "block.note_block.pling"),
             Sound.Source.UI, 1f, 1f
         )
-
         player.playSound(sound)
-
-        // TODO: Sync with db and show in MC UI
         player.closeInventory()
     }
 }

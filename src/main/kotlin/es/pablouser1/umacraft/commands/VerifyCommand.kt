@@ -79,6 +79,7 @@ class VerifyCommand(
 
             logger.info("User created, NIU $userNiu | Username: $username | Id: $invitationId")
             sender.sendPlainMessage(Messages.VERIFY_OK)
+            sender.sendPlainMessage(Messages.VERIFY_CENTRO_REMINDER)
         }
 
         return Command.SINGLE_SUCCESS

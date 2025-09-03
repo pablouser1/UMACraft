@@ -62,7 +62,7 @@ class Umacraft : JavaPlugin() {
             registrar.register(RegisterCommand(auth, mail, logger).createCommand())
             registrar.register(VerifyCommand(auth, logger).createCommand())
             registrar.register(LoginCommand(auth, logger).createCommand())
-            registrar.register(CentrosCommand().createCommand())
+            registrar.register(CentrosCommand(auth).createCommand())
         })
     }
 }

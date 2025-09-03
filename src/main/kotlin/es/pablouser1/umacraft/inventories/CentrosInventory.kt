@@ -2,7 +2,6 @@ package es.pablouser1.umacraft.inventories
 
 import es.pablouser1.umacraft.constants.Centros
 import net.kyori.adventure.text.Component
-import org.bukkit.Material
 import org.bukkit.Server
 import org.bukkit.inventory.Inventory
 import org.bukkit.inventory.InventoryHolder
@@ -14,9 +13,9 @@ class CentrosInventory(server: Server): InventoryHolder {
 
     fun populate() {
         Centros.getAll().forEachIndexed { index, centro ->
-            val item = ItemStack.of(Material.STONE, 1)
+            val item = ItemStack.of(centro.material, 1)
             val meta = item.itemMeta!!
-            meta.displayName(Component.text(centro))
+            meta.displayName(Component.text(centro.name))
             item.itemMeta = meta
 
             inventory.setItem(index, item)
