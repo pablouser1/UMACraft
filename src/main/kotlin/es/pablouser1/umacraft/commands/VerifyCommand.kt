@@ -77,7 +77,7 @@ class VerifyCommand(
             // Remove invitation after user has been inserted
             Invitations.deleteWhere { Invitations.id eq invitationId }
 
-            logger.info("User created with NIU $userNiu, linked to $username. ID $invitationId")
+            logger.info("User created, NIU $userNiu | Username: $username | Id: $invitationId")
             sender.sendPlainMessage(Messages.VERIFY_OK)
         }
 

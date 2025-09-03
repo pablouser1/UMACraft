@@ -35,7 +35,9 @@ class LoginCommand(
             return Command.SINGLE_SUCCESS
         }
 
-        if (auth.exists(sender.player!!.name)) {
+        val username = sender.player!!.name
+
+        if (auth.exists(username)) {
             sender.sendRichMessage(Messages.COMMON_ALREADY_LOGGED_IN)
             return Command.SINGLE_SUCCESS
         }
@@ -43,7 +45,7 @@ class LoginCommand(
         val password = StringArgumentType.getString(c, "password")
 
         val users = transaction {
-            Users.selectAll().where { Users.username eq sender.player!!.name }.limit(1).toList()
+            Users.selectAll().where { Users.username eq username }.limit(1).toList()
         }
 
         if (users.isEmpty()) {
@@ -53,6 +55,7 @@ class LoginCommand(
 
         val hashing = Hashing()
         val user = users.first()
+        val niu = user[Users.niu]
         val hashedPassword = user[Users.password]
 
         if (!hashing.authenticate(password.toCharArray(), hashedPassword)) {
@@ -62,6 +65,7 @@ class LoginCommand(
 
         auth.add(sender.player!!.name)
         sender.sendPlainMessage(Messages.LOGIN_OK)
+        logger.info("User logged in, NIU: $niu | Username: $username")
 
         return Command.SINGLE_SUCCESS
     }

@@ -74,7 +74,7 @@ class RegisterCommand(
             } get Invitations.id
             
             mail.sendCode(niu, code)
-            logger.info("User invited with NIU $niu, ID $id")
+            logger.info("User invited, NIU: $niu | ID: $id")
             sender.sendPlainMessage(Messages.REGISTRATION_OK)
         }
 
