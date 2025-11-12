@@ -5,5 +5,5 @@ Plugin de autentificación para estudiantes de la Universidad de Málaga
 
 ## Requisitos
 * Java 21
-* Minecraft >= 1.19.3
+* Minecraft >= 1.21.10
 * Paper

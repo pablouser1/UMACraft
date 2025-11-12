@@ -4,7 +4,7 @@ import es.pablouser1.umacraft.commands.CentrosCommand
 import es.pablouser1.umacraft.commands.LoginCommand
 import es.pablouser1.umacraft.commands.RegisterCommand
 import es.pablouser1.umacraft.commands.VerifyCommand
-import es.pablouser1.umacraft.enums.MailEncryptionEnum
+import es.pablouser1.umacraft.enums.EmailEncryptionEnum
 import es.pablouser1.umacraft.helpers.Auth
 import es.pablouser1.umacraft.helpers.Mail
 import es.pablouser1.umacraft.listeners.AuthListener
@@ -19,7 +19,6 @@ import org.jetbrains.exposed.v1.jdbc.SchemaUtils
 import org.jetbrains.exposed.v1.jdbc.transactions.transaction
 
 class Umacraft : JavaPlugin() {
-
     override fun onEnable() {
         saveDefaultConfig()
 
@@ -30,7 +29,7 @@ class Umacraft : JavaPlugin() {
             port = config.getInt("mail.port", 1025),
             username = config.getString("mail.username", "")!!,
             password = config.getString("mail.password", "")!!,
-            encryption = MailEncryptionEnum.valueOf(config.getString("mail.encryption", "NONE")!!),
+            encryption = EmailEncryptionEnum.valueOf(config.getString("mail.encryption", "NONE")!!),
         ))
 
         val auth = Auth()

@@ -1,6 +1,6 @@
 package es.pablouser1.umacraft.helpers
 
-import es.pablouser1.umacraft.enums.MailEncryptionEnum
+import es.pablouser1.umacraft.enums.EmailEncryptionEnum
 import es.pablouser1.umacraft.models.EmailConfig
 import jakarta.mail.*
 import jakarta.mail.internet.InternetAddress
@@ -22,7 +22,7 @@ class Mail(data: EmailConfig) {
         prop["mail.smtp.port"] = data.port
         prop["mail.smtp.auth"] = !data.password.isEmpty()
 
-        if (data.encryption == MailEncryptionEnum.STARTTLS) {
+        if (data.encryption == EmailEncryptionEnum.STARTTLS) {
             prop["mail.smtp.starttls.enable"] = true
             prop["mail.smtp.ssl.trust"] = data.host
         }
