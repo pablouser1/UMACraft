@@ -4,6 +4,5 @@ main: es.pablouser1.umacraft.Umacraft
 api-version: '1.21'
 authors: [ Pablo Ferreiro ]
 load: STARTUP
-description: Plugin para servidor UMACraft
 description: Autenticador de alumnos de la UMA
 website: https://github.com/pablouser1/UMACraft

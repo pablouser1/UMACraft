@@ -1,5 +1,5 @@
 db:
-  uri: 'jdbc:sqlite:file:test?mode=memory&cache=shared'
+  uri: 'jdbc:sqlite:file:data.db'
   driver: 'org.sqlite.JDBC'
 mail:
   host: localhost
